@@ -4,7 +4,7 @@
   "author": "Ihar Biaspalau",
   "organization": "Besya",
   "description": "Biome for Nova",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "categories": ["formatters", "issues"],
   "repository": "https://github.com/besya/nova-biome",
   "license": "MIT",

@@ -50,3 +50,37 @@ interface ServerOptions {
   args?: string[]
   env?: { [key: string]: string }
 }
+
+interface DetailedSyntax {
+  syntax: string
+  languageId: string
+}
+
+type Syntax = string | DetailedSyntax
+
+declare class LanguageClient {
+  constructor(
+    identifier: string,
+    name: string,
+    serverOptions: ServerOptions,
+    clientOptions: { initializationOptions?: any; syntaxes: Syntax[] },
+  )
+
+  readonly identifier: string
+  readonly name: string
+  readonly running: boolean
+
+  onDidStop<T>(
+    callback: (this: T, err?: Error) => void,
+    thisValue?: T,
+  ): Disposable
+  onNotification(method: string, callback: (parameters: any) => void): void
+  onRequest(
+    method: string,
+    callback: (parameters: any) => unknown | Promise<unknown>,
+  ): void
+  sendRequest(method: string, parameters?: unknown): Promise<unknown>
+  sendNotification(method: string, parameters?: unknown): void
+  start(): void
+  stop(): void
+}

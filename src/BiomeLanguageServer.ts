@@ -2,9 +2,9 @@ import { lspRangeToRange } from './helpers'
 
 class BiomeLanguageServer {
   languageClient: LanguageClient | null = null
-  syntaxes: string[] = []
+  syntaxes: Syntax[]
 
-  constructor(syntaxes: string[] = []) {
+  constructor(syntaxes: Syntax[] = []) {
     this.syntaxes = syntaxes
     nova.config.observe('besya.biome.path', (path: string) => {
       this.start(path)

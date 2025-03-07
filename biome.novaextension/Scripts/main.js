@@ -29,14 +29,14 @@ const syntaxes = [
     'typescript.tsx',
     'typescriptreact',
     'vue',
+    { syntax: 'jsx', languageId: 'javascriptreact' },
+    { syntax: 'tsx', languageId: 'typescriptreact' },
 ];
 function activate() {
     createOrRestartLSP();
     nova.workspace.onDidAddTextEditor((editor) => {
         editor.onWillSave((editor) => __awaiter(this, void 0, void 0, function* () {
-            var _a;
-            if (shouldFormatOnSave() &&
-                syntaxes.includes((_a = editor.document.syntax) !== null && _a !== void 0 ? _a : '')) {
+            if (shouldFormatOnSave() && isSyntaxSupported(editor.document.syntax)) {
                 yield (languageServer === null || languageServer === void 0 ? void 0 : languageServer.formatDocument(editor));
             }
         }));
@@ -60,6 +60,10 @@ function activate() {
 }
 function deactivate() {
     stopLSP();
+}
+function isSyntaxSupported(syntax) {
+    return syntaxes.some((supportedSyntax) => supportedSyntax === syntax ||
+        supportedSyntax.syntax === syntax);
 }
 function createOrRestartLSP() {
     stopLSP();

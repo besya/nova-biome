@@ -14,6 +14,8 @@ const syntaxes = [
   'typescript.tsx',
   'typescriptreact',
   'vue',
+  { syntax: 'jsx', languageId: 'javascriptreact' } as Syntax,
+  { syntax: 'tsx', languageId: 'typescriptreact' } as Syntax,
 ]
 
 export function activate() {
@@ -21,10 +23,7 @@ export function activate() {
 
   nova.workspace.onDidAddTextEditor((editor) => {
     editor.onWillSave(async (editor) => {
-      if (
-        shouldFormatOnSave() &&
-        syntaxes.includes(editor.document.syntax ?? '')
-      ) {
+      if (shouldFormatOnSave() && isSyntaxSupported(editor.document.syntax)) {
         await languageServer?.formatDocument(editor)
       }
     })
@@ -52,6 +51,14 @@ export function activate() {
 
 export function deactivate() {
   stopLSP()
+}
+
+function isSyntaxSupported(syntax: string | null): boolean {
+  return syntaxes.some(
+    (supportedSyntax) =>
+      supportedSyntax === syntax ||
+      (supportedSyntax as DetailedSyntax).syntax === syntax,
+  )
 }
 
 function createOrRestartLSP() {

@@ -13,7 +13,6 @@ const helpers_1 = require("./helpers");
 class BiomeLanguageServer {
     constructor(syntaxes = []) {
         this.languageClient = null;
-        this.syntaxes = [];
         this.syntaxes = syntaxes;
         nova.config.observe('besya.biome.path', (path) => {
             this.start(path);

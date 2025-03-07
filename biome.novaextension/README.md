@@ -36,7 +36,7 @@ Change it if you installed `biome` without `brew`
 Enables/Disables autoformat on save using biome
 
 ## Syntaxes
-Currently included syntaxes: astro, css, graphql, javascript, javascriptreact, json, jsonc, svelte, typescript, typescript.tsx, typescriptreact, vue
+Currently included syntaxes: astro, css, graphql, javascript, javascriptreact, json, jsonc, jsx, svelte, typescript, typescript.tsx, typescriptreact, tsx, vue
 
 ## Configuration files
 The **Biome** extension watches changes in `biome.json`, `biome.jsonc`, `.editorconfig` and `rome.json` and restarts the LSP server to immediately reflect changes on diagnostics/formatting behavior
