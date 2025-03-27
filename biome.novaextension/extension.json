@@ -4,7 +4,7 @@
   "author": "Ihar Biaspalau",
   "organization": "Besya",
   "description": "Biome for Nova",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "categories": ["formatters", "issues"],
   "repository": "https://github.com/besya/nova-biome",
   "license": "MIT",
@@ -16,5 +16,19 @@
   "entitlements": {
     "process": true,
     "filesystem": "readonly"
+  },
+
+  "commands": {
+    "editor": [],
+    "extensions": [
+      {
+        "title": "Start or Restart LSP",
+        "command": "besya.biome.restart"
+      },
+      {
+        "title": "Stop LSP",
+        "command": "besya.biome.stop"
+      }
+    ]
   }
 }

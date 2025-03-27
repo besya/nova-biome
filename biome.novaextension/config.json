@@ -1,15 +1,15 @@
 [
-    {
-        "key": "besya.biome.path",
-        "title": "Biome Path",
-        "type": "path",
-        "placeholder": "/opt/homebrew/bin/biome",
-        "default": "/opt/homebrew/bin/biome"
-    },
-    {
-      "key": "besya.biome.formatOnSave",
-      "title": "Format on Save",
-      "type": "boolean",
-      "default": false
-    }
+  {
+    "key": "besya.biome.path",
+    "title": "Biome Path",
+    "type": "path",
+    "placeholder": "/opt/homebrew/bin/biome",
+    "default": "/opt/homebrew/bin/biome"
+  },
+  {
+    "key": "besya.biome.formatOnSave",
+    "title": "Format on Save",
+    "type": "boolean",
+    "default": false
+  }
 ]

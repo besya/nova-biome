@@ -19,6 +19,10 @@ const syntaxes = [
 ]
 
 export function activate() {
+  nova.commands.register('besya.biome.restart', createOrRestartLSP)
+  nova.commands.register('besya.biome.stop', stopLSP)
+
+  stopLSP()
   createOrRestartLSP()
 
   nova.workspace.onDidAddTextEditor((editor) => {
@@ -44,6 +48,7 @@ export function activate() {
       return
     }
     editor.onDidSave(async (_editor) => {
+      stopLSP()
       createOrRestartLSP()
     })
   })

@@ -33,6 +33,9 @@ const syntaxes = [
     { syntax: 'tsx', languageId: 'typescriptreact' },
 ];
 function activate() {
+    nova.commands.register('besya.biome.restart', createOrRestartLSP);
+    nova.commands.register('besya.biome.stop', stopLSP);
+    stopLSP();
     createOrRestartLSP();
     nova.workspace.onDidAddTextEditor((editor) => {
         editor.onWillSave((editor) => __awaiter(this, void 0, void 0, function* () {
@@ -54,6 +57,7 @@ function activate() {
             return;
         }
         editor.onDidSave((_editor) => __awaiter(this, void 0, void 0, function* () {
+            stopLSP();
             createOrRestartLSP();
         }));
     });
